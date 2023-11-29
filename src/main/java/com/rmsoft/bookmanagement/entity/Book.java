@@ -1,8 +1,14 @@
 package com.rmsoft.bookmanagement.entity;
 
+import lombok.*;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
+@Getter
+@Builder
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class Book extends BaseTimeEntity {
 

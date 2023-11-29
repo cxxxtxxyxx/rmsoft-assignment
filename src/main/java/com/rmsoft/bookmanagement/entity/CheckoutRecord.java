@@ -1,9 +1,15 @@
 package com.rmsoft.bookmanagement.entity;
 
+import lombok.*;
+
 import javax.persistence.*;
 
 import java.time.LocalDateTime;
 
+@Getter
+@Builder
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 @Table(
         name = "checkout_record",
