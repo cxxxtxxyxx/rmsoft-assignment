@@ -2,6 +2,7 @@ package com.rmsoft.bookmanagement.auth.dto;
 
 import lombok.*;
 
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class AuthResponseDto {
 
     @Getter
