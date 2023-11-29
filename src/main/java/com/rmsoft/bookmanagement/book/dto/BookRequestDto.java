@@ -13,7 +13,29 @@ public class BookRequestDto {
     @Builder
     @NoArgsConstructor(access = AccessLevel.PROTECTED)
     @AllArgsConstructor(access = AccessLevel.PROTECTED)
-    public static class registration {
+    public static class Registration {
+
+        @NotNull
+        @NotEmpty
+        private String name;
+
+        @NotNull
+        @NotEmpty
+        private String publisherName;
+
+        @NotNull
+        @NotEmpty
+        private String authorName;
+
+        @NotNull
+        private LocalDate publishedAt;
+    }
+
+    @Getter
+    @Builder
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
+    @AllArgsConstructor(access = AccessLevel.PROTECTED)
+    public static class Modification {
 
         @NotNull
         @NotEmpty

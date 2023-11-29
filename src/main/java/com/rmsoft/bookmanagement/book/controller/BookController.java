@@ -20,11 +20,21 @@ public class BookController {
     private final BookService bookService;
 
     @PostMapping
-    public ResponseEntity<?> registerBook(@RequestBody @Valid BookRequestDto.registration registrationRequestDto) {
+    public ResponseEntity<?> registerBook(@RequestBody @Valid BookRequestDto.Registration registrationRequestDto) {
 
         bookService.register(registrationRequestDto);
 
         return APIDataResponse.empty(BookSuccessCode.REGISTERED);
+    }
+
+    @PutMapping("/{bookId}")
+    public ResponseEntity<?> modifyBook(
+            @RequestBody @Valid BookRequestDto.Modification modificationRequestDto,
+            @PathVariable("bookId") Long bookId
+    ) {
+        bookService.modify(modificationRequestDto, bookId);
+
+        return APIDataResponse.empty(BookSuccessCode.MODIFIED);
     }
 
     @GetMapping("/trace/{bookId}")

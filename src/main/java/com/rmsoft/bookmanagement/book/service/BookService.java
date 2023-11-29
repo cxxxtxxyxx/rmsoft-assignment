@@ -1,9 +1,11 @@
 package com.rmsoft.bookmanagement.book.service;
 
+import com.rmsoft.bookmanagement.book.code.BookErrorCode;
 import com.rmsoft.bookmanagement.book.dto.BookRequestDto;
 import com.rmsoft.bookmanagement.book.dto.BookResponseDto;
 import com.rmsoft.bookmanagement.book.repository.BookCheckoutRecordRepository;
 import com.rmsoft.bookmanagement.book.repository.BookRepository;
+import com.rmsoft.bookmanagement.common.exception.NotFoundException;
 import com.rmsoft.bookmanagement.entity.Book;
 import com.rmsoft.bookmanagement.entity.BookCheckoutRecord;
 import com.rmsoft.bookmanagement.member.dto.MemberResponseDto;
@@ -23,7 +25,7 @@ public class BookService {
     private final BookCheckoutRecordRepository bookCheckoutRecordRepository;
 
     @Transactional
-    public void register(BookRequestDto.registration registrationRequestDto) {
+    public void register(BookRequestDto.Registration registrationRequestDto) {
 
         Book book = Book.builder()
                 .authorName(registrationRequestDto.getAuthorName())
@@ -52,5 +54,18 @@ public class BookService {
                             .build();
                 })
                 .collect(Collectors.toList());
+    }
+
+    @Transactional
+    public void modify(BookRequestDto.Modification modificationRequestDto, Long bookId) {
+        Book book = bookRepository.findById(bookId)
+                .orElseThrow(() -> new NotFoundException(BookErrorCode.NOT_FOUND));
+
+        book.update(
+                modificationRequestDto.getName(),
+                modificationRequestDto.getPublisherName(),
+                modificationRequestDto.getAuthorName(),
+                modificationRequestDto.getPublishedAt()
+        );
     }
 }

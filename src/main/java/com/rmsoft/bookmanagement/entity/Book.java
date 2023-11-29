@@ -27,4 +27,11 @@ public class Book extends BaseTimeEntity {
 
     @Column(nullable = false)
     private LocalDate publishedAt;
+
+    public void update(String name, String publisherName, String authorName, LocalDate publishedAt) {
+        this.name = name;
+        this.publisherName = publisherName;
+        this.authorName = authorName;
+        this.publishedAt = publishedAt;
+    }
 }
