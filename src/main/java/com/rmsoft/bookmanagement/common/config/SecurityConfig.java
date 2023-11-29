@@ -27,7 +27,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
 
         String[] whiteList = {
-                "/api/sign-up", "/api/sign-in", "/static/js/**", "/static/image/**", "/static/css/**", "/static/scss/**"
+                "/api/auth/sign-up", "/api/auth/sign-in", "/static/js/**", "/static/image/**", "/static/css/**", "/static/scss/**"
         };
 
         return httpSecurity
