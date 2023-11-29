@@ -27,9 +27,7 @@ public class AuthService {
     @Transactional
     public void create(AuthRequestDto.SignUp signUpRequestDto) {
 
-        Member member = getMemberByEmailOrNull(signUpRequestDto.getEmail());
-
-        validateAlreadyExistMember(member);
+        validateAlreadyExistEmail(signUpRequestDto.getEmail());
 
         Member signUpMember = createMember(signUpRequestDto);
         memberRepository.save(signUpMember);
@@ -65,12 +63,6 @@ public class AuthService {
                 .orElseThrow(() -> new NotFoundMemberException(AuthErrorCode.NOT_FOUND_MEMBER_BY_EMAIL));
     }
 
-
-    private Member getMemberByEmailOrNull(String email) {
-        return memberRepository.findByEmail(email)
-                .orElse(null);
-    }
-
     private Member createMember(AuthRequestDto.SignUp signUpRequestDto) {
         String encodedPassword = getEncodedPassword(signUpRequestDto.getPassword());
 
@@ -85,9 +77,10 @@ public class AuthService {
         return passwordEncoder.encode(password);
     }
 
-    private void validateAlreadyExistMember(Member member) {
-        if (member != null) {
-            throw new AlreadyEmailExistException(AuthErrorCode.ALREADY_EXIST_EMAIL);
-        }
+    private void validateAlreadyExistEmail(String email) {
+        memberRepository.findByEmail(email)
+                .ifPresent(member -> {
+                    throw new AlreadyEmailExistException(AuthErrorCode.ALREADY_EXIST_EMAIL);
+                });
     }
 }
