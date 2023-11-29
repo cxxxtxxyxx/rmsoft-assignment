@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
                 columnNames = {"member_id", "book_id"}
         )
 )
-public class CheckoutRecord extends BaseTimeEntity {
+public class BookCheckoutRecord extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
