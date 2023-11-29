@@ -1,7 +1,6 @@
 package com.rmsoft.bookmanagement.entity;
 
-import jakarta.persistence.*;
-
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity

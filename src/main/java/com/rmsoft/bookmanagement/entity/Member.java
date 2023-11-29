@@ -1,6 +1,6 @@
 package com.rmsoft.bookmanagement.entity;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
 public class Member extends BaseTimeEntity {
