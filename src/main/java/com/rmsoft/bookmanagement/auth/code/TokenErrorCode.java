@@ -1,4 +1,4 @@
-package com.rmsoft.bookmanagement.member.code;
+package com.rmsoft.bookmanagement.auth.code;
 
 import com.rmsoft.bookmanagement.common.response.code.ErrorCode;
 import lombok.AllArgsConstructor;

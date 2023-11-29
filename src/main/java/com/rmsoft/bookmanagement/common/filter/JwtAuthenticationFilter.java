@@ -1,9 +1,9 @@
 package com.rmsoft.bookmanagement.common.filter;
 
-import com.rmsoft.bookmanagement.member.code.TokenErrorCode;
-import com.rmsoft.bookmanagement.member.domain.TokenManager;
-import com.rmsoft.bookmanagement.member.domain.TokenPayload;
-import com.rmsoft.bookmanagement.member.exception.InvalidJwtTokenException;
+import com.rmsoft.bookmanagement.auth.code.TokenErrorCode;
+import com.rmsoft.bookmanagement.auth.domain.TokenManager;
+import com.rmsoft.bookmanagement.auth.domain.TokenPayload;
+import com.rmsoft.bookmanagement.auth.exception.InvalidJwtTokenException;
 import io.jsonwebtoken.Claims;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

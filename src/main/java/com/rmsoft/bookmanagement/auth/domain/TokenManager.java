@@ -1,7 +1,7 @@
-package com.rmsoft.bookmanagement.member.domain;
+package com.rmsoft.bookmanagement.auth.domain;
 
-import com.rmsoft.bookmanagement.member.code.TokenErrorCode;
-import com.rmsoft.bookmanagement.member.exception.InvalidJwtTokenException;
+import com.rmsoft.bookmanagement.auth.code.TokenErrorCode;
+import com.rmsoft.bookmanagement.auth.exception.InvalidJwtTokenException;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import lombok.extern.slf4j.Slf4j;

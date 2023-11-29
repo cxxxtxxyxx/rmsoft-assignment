@@ -1,4 +1,4 @@
-package com.rmsoft.bookmanagement.member.domain;
+package com.rmsoft.bookmanagement.auth.domain;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
