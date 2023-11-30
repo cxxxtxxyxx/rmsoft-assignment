@@ -4,6 +4,7 @@ import com.rmsoft.bookmanagement.book.code.BookSuccessCode;
 import com.rmsoft.bookmanagement.book.dto.BookRequestDto;
 import com.rmsoft.bookmanagement.book.dto.BookResponseDto;
 import com.rmsoft.bookmanagement.book.service.BookService;
+import com.rmsoft.bookmanagement.common.annotation.LoginMemberId;
 import com.rmsoft.bookmanagement.common.response.APIDataResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -42,5 +43,25 @@ public class BookController {
         List<BookResponseDto.Trace> traces = bookService.searchTraces(bookId);
 
         return APIDataResponse.of(traces, BookSuccessCode.SUCCESS_TRACE);
+    }
+
+    @PostMapping("/checkout/{bookId}")
+    public ResponseEntity<?> checkoutBook(
+            @PathVariable("bookId") Long bookId,
+            @LoginMemberId Long memberId
+    ) {
+        bookService.checkout(memberId, bookId);
+
+        return APIDataResponse.empty(BookSuccessCode.SUCCESS_CHECKOUT);
+    }
+
+    @PostMapping("/returned/{bookId}")
+    public ResponseEntity<?> returnBook(
+            @PathVariable("bookId") Long bookId,
+            @LoginMemberId Long memberId
+    ) {
+        bookService.returned(memberId, bookId);
+
+        return APIDataResponse.empty(BookSuccessCode.SUCCESS_RETURNED);
     }
 }

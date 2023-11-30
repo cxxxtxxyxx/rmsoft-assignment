@@ -38,4 +38,16 @@ public class BookCheckoutRecord extends BaseTimeEntity {
 
     @Column
     private LocalDateTime returnedAt;
+
+    public static BookCheckoutRecord of(Member member, Book book, LocalDateTime borrowedAt) {
+        return BookCheckoutRecord.builder()
+                .book(book)
+                .borrowedAt(borrowedAt)
+                .member(member)
+                .build();
+    }
+
+    public void returnedBook(LocalDateTime returnedAt) {
+        this.returnedAt = returnedAt;
+    }
 }
